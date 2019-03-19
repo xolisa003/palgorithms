@@ -68,28 +68,30 @@ def merge_sort(items):
 
 
 
-def iquick_sort(S, a, b):
-
-    if a >= b: return # sorting range
-    pivot = S[b] # last element of range is pivot
-    left = a # will scan on the right
-    right = b - 1 # will scan on the left
-    while left <= right:
-     # scan until reaching value equal or larger than pivot
-        while left <= right and S[left] < pivot:
-            left += 1
-     # scan until reaching value equal or smaller than pivot
-        while left <= right and pivot < S[right]:
-            right -= 1
-        if left <= right: # scans did not strictly cross
-            S[left], S[right] = S[right], S[left] # swap values
-            left, right = left + 1, right - 1 # decrease range
-
-     # put pivot into its final place (currently marked by left index)
-    S[left], S[b] = S[b], S[left]
-     # make recursive calls
-    iquick_sort(S, a, left - 1)
-    iquick_sort(S, left + 1, b)
-
 def quick_sort(S):
+
+    def iquick_sort(S, a, b):
+
+        if a >= b: return # sorting range
+        pivot = S[b] # last element of range is pivot
+        left = a # will scan on the right
+        right = b - 1 # will scan on the left
+        while left <= right:
+         # scan until reaching value equal or larger than pivot
+            while left <= right and S[left] < pivot:
+                left += 1
+         # scan until reaching value equal or smaller than pivot
+            while left <= right and pivot < S[right]:
+                right -= 1
+            if left <= right: # scans did not strictly cross
+                S[left], S[right] = S[right], S[left] # swap values
+                left, right = left + 1, right - 1 # decrease range
+
+         # put pivot into its final place (currently marked by left index)
+        S[left], S[b] = S[b], S[left]
+     # make recursive calls
+        iquick_sort(S, a, left - 1)
+        iquick_sort(S, left + 1, b)
+
     iquick_sort(S, 0, len(S)-1)
+    return S

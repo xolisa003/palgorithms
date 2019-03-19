@@ -10,15 +10,15 @@ def sum_array(array):
 def fibonacci(n):
 
     '''Return nth term in fibonacci sequence'''
-    if n < 3:
-        return 1
+    if n <=1:
+        return n
     else:
         return fibonacci(n-1) + fibonacci(n-2)
 
 def factorial(n):
 
     '''Return n!'''
-    
+
     if n == 0:
         return 1
     else:
